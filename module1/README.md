@@ -18,8 +18,8 @@ define addressPrinter class:
 			city
 			zipCode 
 			
-		for field in field list:
-			print on newline (field)
+for field in field list:
+	print on newline (field)
 		
 Creating a simple java application that will print the items listed above on individual lines.
 
