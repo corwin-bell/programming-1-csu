@@ -1,5 +1,5 @@
-# Module 1 Critical Thinking Assignment
-Demonstrate understanding of basic programming concepts by:
+# Module 1 Critical Thinking Assignment: Option 1 - Address Information
+Demonstrate understanding of basic programming concepts by creating a simple Java Application that prints an individual's address.
 
 ## Pseudocode
 ```
@@ -50,4 +50,4 @@ Zip Code: 12345
 ![Screenshot of Execution](addressPrinterExecution.png "Screenshot of Execution")
 
 ## Git Repo path
-
+[https://github.com/corwin-bell/programming-1-csu.git](https://github.com/corwin-bell/programming-1-csu.git) 
