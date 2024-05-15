@@ -47,6 +47,7 @@ City: Littleton
 Zip Code: 12345
 ```
 ## Screenshot of Execution
+![Screenshot of Execution](addressPrinterExecution.png "Screenshot of Execution")
 
 ## Git Repo path
-Compile and submit your pseudocode, source code, and screenshots of the application executing the application, the results and GIT repository in a single document.
+
