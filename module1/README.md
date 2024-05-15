@@ -10,19 +10,14 @@ Zip code
 
 Pseudocode:
 define addressPrinter class:
-	define main function:
-		initialize field list with the following string fields:
+ 	define main method:
+		initialize and assign values to string fields:
 			firstName
 			lastName
 			streetAddress
 			city
-			zipCode
-		for field in field list assign string values to fields:
-			firstName
-			lastName
-			streetAddress
-			city
-			zipCode
+			zipCode 
+			
 		for field in field list:
 			print on newline (field)
 		
