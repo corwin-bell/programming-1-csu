@@ -1,3 +1,7 @@
+Student: Corwin Bell <br>
+Course: Programming 1 <br>
+Instructor: Farhad Bari <br>
+5/16/2024
 # Module 1 Critical Thinking Assignment: Option 1 - Address Information
 Demonstrate understanding of basic programming concepts by creating a simple Java Application that prints an individual's address.
 
