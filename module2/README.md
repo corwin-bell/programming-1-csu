@@ -3,6 +3,7 @@ Course: Programming 1 <br>
 Instructor: Farhad Bari <br>
 5/30/2024
 # Module 2 Critical Thinking Assignment: Option 1 - Calculate Average Withholding
+[Git Project Folder](https://github.com/corwin-bell/programming-1-csu/tree/main/module2) <br>
 Create a program that will calculate the weekly average tax withholding for a customer given the following weekly income guidelines:
 - Income less than $500: tax rate 10%
 - Incomes greater than/equal to $500 and less than $1500: tax rate 15%
