@@ -49,8 +49,6 @@ import java.util.Scanner;
                 }
             }
         }
-
         scnr.close();
-    }
-        
+    }      
 }
