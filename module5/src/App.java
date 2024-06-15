@@ -31,26 +31,34 @@ import java.util.Arrays;
             System.out.print(weekDays[i] + ": ");
             avgTemps[i] = scnr.nextInt();
         }
-        
-        System.out.println("Commands: '<WEEKDAY>' print temps for given weekday,");
+        System.out.println("\n Commands: '<WEEKDAY>' print temps for given weekday,");
         System.out.println("'weekly temps' print temps for all weekdays with average");
         System.out.println("'q' quit program");
         // while loop for program user interface, loop until q is entered
-        while (!userInput.equals("q")) {
+        while (!userInput.equalsIgnoreCase("q")) {
             System.out.print("Command: ");
-            userInput = scnr.next();
+            userInput = scnr.nextLine();
             
-            // if user inputs "[Weekday]", display temps for that week day
-            for (int i = 0; i < weekDays.length; i++) {
-                if (userInput.toLowerCase().equals(weekDays[i].toLowerCase())) {
+            // if user inputs "weekly temps"; display temps by day and weekly average
+            if (userInput.equalsIgnoreCase("weekly temps")) {
+                int tempSum = 0;
+                for (int i = 0; i < weekDays.length; i++) {
                     System.out.printf("%s: %d %n", weekDays[i], avgTemps[i]);
-                    break;
+                    tempSum += avgTemps[i];
+                }
+                System.out.printf("Weekly avg temp: %d %n", tempSum/DAYS_PER_WEEK);
+            }
+            
+            // else, if user inputs "[Weekday]", display temps for that week day
+            else {
+                for (int i = 0; i < weekDays.length; i++) {
+                    if (userInput.equalsIgnoreCase(weekDays[i])) {
+                        System.out.printf("%s: %d %n", weekDays[i], avgTemps[i]);
+                        break;
+                    }
                 }
             }
-            // if user inputs "weekly temps"; display temps by day and weekly average
         }
-        System.out.println(Arrays.toString(weekDays));
-        System.out.println(Arrays.toString(avgTemps));
 
         scnr.close();
     }
