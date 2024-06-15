@@ -27,25 +27,32 @@ import java.util.Arrays;
 
         // ask user for avg temps for each day
         System.out.println(" enter average temps for each weekday: ");
-        for (int i=0; i < weekDays.length; i++) {
+        for (int i = 0; i < weekDays.length; i++) {
             System.out.print(weekDays[i] + ": ");
             avgTemps[i] = scnr.nextInt();
         }
         
-        System.out.println("Commands: '<WEEKDAY> temps' print temps for given weekday,");
+        System.out.println("Commands: '<WEEKDAY>' print temps for given weekday,");
         System.out.println("'weekly temps' print temps for all weekdays with average");
         System.out.println("'q' quit program");
         // while loop for program user interface, loop until q is entered
         while (!userInput.equals("q")) {
             System.out.print("Command: ");
             userInput = scnr.next();
-            System.out.println(Arrays.toString(weekDays));
-            System.out.println(Arrays.toString(avgTemps));
-
-            // else ask user what output they want
-                // if user inputs "[Weekday] temps", display temps for that week day
-                // if user inputs "weekly temps"; display temps by day and weekly average
+            
+            // if user inputs "[Weekday]", display temps for that week day
+            for (int i = 0; i < weekDays.length; i++) {
+                if (userInput.toLowerCase().equals(weekDays[i].toLowerCase())) {
+                    System.out.printf("%s: %d %n", weekDays[i], avgTemps[i]);
+                    break;
+                }
+            }
+            // if user inputs "weekly temps"; display temps by day and weekly average
         }
+        System.out.println(Arrays.toString(weekDays));
+        System.out.println(Arrays.toString(avgTemps));
+
         scnr.close();
     }
+        
 }
