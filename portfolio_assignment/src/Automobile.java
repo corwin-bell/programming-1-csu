@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 
 public class Automobile {
-    private String ID;
+    private final Integer ID;
     private String make;
     private String model;
     private String color;
@@ -13,7 +13,7 @@ public class Automobile {
      
     // add try catch blocks to most appropriate place, here or reference class?
     public Automobile() {
-        ID = "0"; //FIXME: add auto-increment value
+        ID = 0; //FIXME: add auto-increment value
         make = "unknown";
         model = "unknown";
         color = "unknown";
@@ -22,7 +22,7 @@ public class Automobile {
     }
 
     public Automobile(String make, String model, String color, int year, int mileage) {
-        ID = "0";
+        ID = 0;
         this.make = make;
         this.model = model; 
         this.color = color;
@@ -36,11 +36,12 @@ public class Automobile {
 
     // set all as method in class or reference class?
     // FIXME: list all atrtributes
+    public Integer getID() {return ID;}
     public String getMake() {return make;}
     
     public LinkedHashMap<String, String> getautoInfo() {
         LinkedHashMap<String, String> autoMap = new LinkedHashMap<String, String>();
-        autoMap.put("ID", this.ID);
+        autoMap.put("ID", Integer.toString(this.ID));
         autoMap.put("make", this.make);
         autoMap.put("model", this.model);
         autoMap.put("color", this.color);

@@ -22,17 +22,21 @@ public class Automobile_Inventory {
                 else if (command.equalsIgnoreCase("listAutoInventory")) {
                     listAutoInventory(autoList);
                 }
+                else if (command.equalsIgnoreCase("removeAuto")) {
+                    // move this stuff inside remove method?
+                    System.out.print("Enter auto ID to remove: ");
+                    int ID = scnr.nextInt();
+                    scnr.nextLine();
+                    removeAuto(autoList, ID);
+                }
+                // updateAuto()
+                // exportInventory()
             }
             while (!command.equalsIgnoreCase("quit"));   
 
         }
-            // try-catch for user commands
-                // addAuto()
-                // listAutoInventory()
-                // removeAuto()
-                // addAuto()
-                // updateAuto()
-                // exportInventory()
+        // catch blocks?
+                
     }
     
     public static void addAuto(Scanner scnr, ArrayList<Automobile> autoList) {
@@ -68,8 +72,16 @@ public class Automobile_Inventory {
         autoList.forEach((auto) -> System.out.println(auto.getautoInfo()));
     }
     
-    public static void removeAuto() { // remove auto from inventory based on ID from user input
+    public static void removeAuto(ArrayList<Automobile> autoList, int ID) { // remove auto from inventory based on ID from user input
         // try
+        for (int i = 0; i < autoList.size(); i++) {
+            if (ID == autoList.get(i).getID()) {
+                autoList.remove(i);
+                System.out.printf("Auto ID: %d removed\n", ID);
+                break;
+            }
+        System.out.println("Auto ID not found");
+        }
         //     remove Automobile from autoList
         //     print success message
         // catch value not found
