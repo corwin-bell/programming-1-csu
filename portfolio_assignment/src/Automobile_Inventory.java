@@ -19,6 +19,9 @@ public class Automobile_Inventory {
                 if (command.equalsIgnoreCase("addAuto")) {
                     addAuto(scnr, autoList);
                 }
+                else if (command.equalsIgnoreCase("listAutoInventory")) {
+                    listAutoInventory(autoList);
+                }
             }
             while (!command.equalsIgnoreCase("quit"));   
 
@@ -45,10 +48,10 @@ public class Automobile_Inventory {
             int year = scnr.nextInt();
             System.out.println("Enter mileage(int)");
             int mileage = scnr.nextInt();
+            scnr.nextLine(); // clear scanner before next userInput
             
             Automobile auto = new Automobile(make, model, color, year, mileage);
             autoList.add(auto);
-            System.out.println(autoList.get(0).getMake());
             System.out.println("auto added");
         }
         catch (InputMismatchException e) {
@@ -58,8 +61,11 @@ public class Automobile_Inventory {
         }
         }
     
-    public static void listAutoInventory() {
-
+    public static void listAutoInventory(ArrayList<Automobile> autoList) {
+        // if inventory empty print 'inventory empty'
+        // else
+            // for auto in autolist print autoInfo
+        autoList.forEach((auto) -> System.out.println(auto.getautoInfo()));
     }
     
     public static void removeAuto() { // remove auto from inventory based on ID from user input

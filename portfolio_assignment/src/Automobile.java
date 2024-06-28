@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 
 public class Automobile {
     private String ID;
     private String make;
     private String model;
     private String color;
-    private int year;
-    private int mileage;
+    private Integer year;
+    private Integer mileage;
     // private ArrayList<String> fieldList = new ArrayList<>(Arrays.asList("make","model","color","year","mileage"));
      
     // add try catch blocks to most appropriate place, here or reference class?
@@ -21,7 +22,6 @@ public class Automobile {
     }
 
     public Automobile(String make, String model, String color, int year, int mileage) {
-        // FIXME: implement parametarized constructor
         ID = "0";
         this.make = make;
         this.model = model; 
@@ -37,12 +37,15 @@ public class Automobile {
     // set all as method in class or reference class?
     // FIXME: list all atrtributes
     public String getMake() {return make;}
-    // public ArrayList<String> getFieldList() {return fieldList;}
-    // list vehicle information (return String array)
-    // redundant with get methods? maybe best to have in
-    // reference class?  
-    public String getautoInfo() {
-        // try hashmap
-        return "FIXME: list all auto info as String array";
+    
+    public LinkedHashMap<String, String> getautoInfo() {
+        LinkedHashMap<String, String> autoMap = new LinkedHashMap<String, String>();
+        autoMap.put("ID", this.ID);
+        autoMap.put("make", this.make);
+        autoMap.put("model", this.model);
+        autoMap.put("color", this.color);
+        autoMap.put("year", Integer.toString(this.year));
+        autoMap.put("mileage", Integer.toString(this.mileage));
+        return autoMap;
     }
 }
