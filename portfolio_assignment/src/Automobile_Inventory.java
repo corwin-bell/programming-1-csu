@@ -29,7 +29,9 @@ public class Automobile_Inventory {
                     scnr.nextLine();
                     removeAuto(autoList, ID);
                 }
-                // updateAuto()
+                else if (command.equalsIgnoreCase("updateAuto")) {
+                    updateAuto(autoList, scnr);
+                }
                 // exportInventory()
             }
             while (!command.equalsIgnoreCase("quit"));   
@@ -88,6 +90,24 @@ public class Automobile_Inventory {
         //     print error message
     }
     
+    public static void updateAuto(ArrayList<Automobile> autoList, Scanner scnr) {
+        System.out.print("Enter an auto ID to update: ");
+        int ID = scnr.nextInt();
+        scnr.nextLine();
+        for (int i = 0; i < autoList.size(); i++) {
+            if (ID == autoList.get(i).getID()) {
+                System.out.println(autoList.get(i).getautoInfo());
+                System.out.print("Enter field to update: ");
+                String field = scnr.nextLine();
+                if (field.equalsIgnoreCase("make")) {
+                    System.out.print("Enter new value: ");
+                    autoList.get(i).setMake(scnr.nextLine());
+                }
+                break;
+            }
+        System.out.println("Auto ID not found");
+        }
+    }
     public static void exportInventory() { // print information to file
     }
     

@@ -30,14 +30,19 @@ public class Automobile {
         this.mileage = mileage;
     }
     // update vehicle attributes methods
-    public void setMake(String make) {
-        this.make = make;
-    }
+    public void setMake(String make) {this.make = make;}
+    public void setModel(String model) {this.model = model;}
+    public void setColor(String color) {this.color = color;}
+    public void setYear(Integer year) {this.year = year;}
+    public void setMileage(Integer mileage) {this.mileage = mileage;}
 
     // set all as method in class or reference class?
-    // FIXME: list all atrtributes
     public Integer getID() {return ID;}
     public String getMake() {return make;}
+    public String getModel() {return model;}
+    public String getColor() {return color;}
+    public Integer getYear() {return year;}
+    public Integer getMileage() {return mileage;}
     
     public LinkedHashMap<String, String> getautoInfo() {
         LinkedHashMap<String, String> autoMap = new LinkedHashMap<String, String>();
