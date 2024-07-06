@@ -90,25 +90,53 @@ public class Automobile_Inventory {
     }
     
     public static void updateAuto(ArrayList<Automobile> autoList, Scanner scnr) {
-        System.out.print("Enter an auto ID to update: ");
-        int ID = scnr.nextInt();
-        scnr.nextLine();
-        for (int i = 0; i < autoList.size(); i++) {
-            if (ID == autoList.get(i).getID()) {
-                System.out.println(autoList.get(i).getautoInfo());
-                System.out.print("Enter field to update: ");
-                String field = scnr.nextLine();
-                if (field.equalsIgnoreCase("make")) {
-                    System.out.print("Enter new value: ");
-                    autoList.get(i).setMake(scnr.nextLine());
-                    System.out.println("make updated");
-                }
-                // FIX: add other fields
-                break;
+        try {
+            System.out.print("Enter an auto index to update: ");
+            int index = scnr.nextInt();
+            scnr.nextLine();
+            System.out.println(autoList.get(index).getautoInfo());
+            System.out.print("Enter field to update: ");
+            String field = scnr.nextLine();
+            if (field.equalsIgnoreCase("make")) {
+                System.out.print("Enter new value: ");
+                autoList.get(index).setMake(scnr.nextLine());
+                System.out.println("make updated");
             }
-        System.out.println("Auto ID not found");
+            else if (field.equalsIgnoreCase("model")) {
+                System.out.print("Enter new value: ");
+                autoList.get(index).setModel(scnr.nextLine());
+                System.out.println("model updated");
+            }
+            else if (field.equalsIgnoreCase("color")) {
+                System.out.print("Enter new value: ");
+                autoList.get(index).setColor(scnr.nextLine());
+                System.out.println("color updated");
+            }
+            else if (field.equalsIgnoreCase("year")) {
+                System.out.print("Enter new value: ");
+                autoList.get(index).setYear(scnr.nextInt());
+                System.out.println("year updated");
+            }
+            else if (field.equalsIgnoreCase("mileage")) {
+                System.out.print("Enter new value: ");
+                autoList.get(index).setMileage(scnr.nextInt());
+                System.out.println("mileage updated");
+            }
+            else {
+                System.out.println("Field not found");
+            }
         }
+        
+        catch (InputMismatchException e) {
+            System.out.println("must enter correct data type for each field");
+            scnr.nextLine(); // clears scanner before next userInput
+        }
+
+        catch (IndexOutOfBoundsException e) {
+            System.out.println("Auto index not found");
+        } 
     }
+
     public static void exportInventory(ArrayList<Automobile> autoList, Scanner scnr) {
 
         // The file path where you want to save the string
