@@ -35,7 +35,7 @@ public class Automobile_Inventory {
                     updateAuto(autoList, scnr);
                 }
                 else if (command.equalsIgnoreCase("exportInventory")) {
-                    exportInventory();
+                    exportInventory(autoList, scnr);
                 }
             }
             while (!command.equalsIgnoreCase("quit"));   
@@ -111,16 +111,18 @@ public class Automobile_Inventory {
         System.out.println("Auto ID not found");
         }
     }
-    public static void exportInventory() {
-        String content = "Hello, World!";
+    public static void exportInventory(ArrayList<Automobile> autoList, Scanner scnr) {
 
         // The file path where you want to save the string
-        String filePath = "output.txt";
+        System.out.print("Enter file path: ");
+        String filePath = scnr.nextLine();
 
         // Try-with-resources to ensure the file is closed after writing
         try (FileWriter fileWriter = new FileWriter(filePath);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
-            printWriter.println(content);
+            for (int i = 0; i < autoList.size(); i++) {
+                printWriter.println(autoList.get(i).getautoInfo());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
