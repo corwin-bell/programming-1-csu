@@ -11,6 +11,7 @@ public class Automobile {
     private Integer mileage;
     // private ArrayList<String> fieldList = new ArrayList<>(Arrays.asList("make","model","color","year","mileage"));
      
+    // add testbench for each class
     // add try catch blocks to most appropriate place, here or reference class?
     public Automobile() {
         ID = 0; //FIXME: add auto-increment value

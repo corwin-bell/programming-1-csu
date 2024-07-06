@@ -2,8 +2,10 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
 import java.util.InputMismatchException;
-
 public class Automobile_Inventory {
     
     // declare variable
@@ -32,7 +34,9 @@ public class Automobile_Inventory {
                 else if (command.equalsIgnoreCase("updateAuto")) {
                     updateAuto(autoList, scnr);
                 }
-                // exportInventory()
+                else if (command.equalsIgnoreCase("exportInventory")) {
+                    exportInventory();
+                }
             }
             while (!command.equalsIgnoreCase("quit"));   
 
@@ -84,8 +88,6 @@ public class Automobile_Inventory {
             }
         System.out.println("Auto ID not found");
         }
-        //     remove Automobile from autoList
-        //     print success message
         // catch value not found
         //     print error message
     }
@@ -103,12 +105,26 @@ public class Automobile_Inventory {
                     System.out.print("Enter new value: ");
                     autoList.get(i).setMake(scnr.nextLine());
                 }
+                // FIX: add other fields
                 break;
             }
         System.out.println("Auto ID not found");
         }
     }
-    public static void exportInventory() { // print information to file
+    public static void exportInventory() {
+        String content = "Hello, World!";
+
+        // The file path where you want to save the string
+        String filePath = "output.txt";
+
+        // Try-with-resources to ensure the file is closed after writing
+        try (FileWriter fileWriter = new FileWriter(filePath);
+             PrintWriter printWriter = new PrintWriter(fileWriter)) {
+            printWriter.println(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
     
 }
