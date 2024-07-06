@@ -146,9 +146,7 @@ public class Automobile_Inventory {
         // Try-with-resources to ensure the file is closed after writing
         try (FileWriter fileWriter = new FileWriter(filePath);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
-            for (int i = 0; i < autoList.size(); i++) {
-                printWriter.println(autoList.get(i).getautoInfo());
-            }
+            autoList.forEach((auto) -> printWriter.println(auto.getautoInfo()));
             System.out.println("export to file successful");
         } catch (IOException e) {
             e.printStackTrace();
