@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.lang.IndexOutOfBoundsException;
 public class Automobile_Inventory {
     
     // declare variable
@@ -14,7 +15,7 @@ public class Automobile_Inventory {
         // consider refactor as linkedlist
         ArrayList<Automobile> autoList = new ArrayList<>();
         String command = "";
-        try (Scanner scnr = new Scanner(System.in)) { // try with Scanner to ensure it closes
+        try (Scanner scnr = new Scanner(System.in)) {
             do {
                 System.out.println("Commands: 'addAuto', 'listAutoInventory', 'removeAuto', 'updateAuto','exportInventory', 'quit'");
                 command = scnr.nextLine();
@@ -25,11 +26,7 @@ public class Automobile_Inventory {
                     listAutoInventory(autoList);
                 }
                 else if (command.equalsIgnoreCase("removeAuto")) {
-                    // move this stuff inside remove method?
-                    System.out.print("Enter auto ID to remove: ");
-                    int ID = scnr.nextInt();
-                    scnr.nextLine();
-                    removeAuto(autoList, ID);
+                    removeAuto(autoList, scnr);
                 }
                 else if (command.equalsIgnoreCase("updateAuto")) {
                     updateAuto(autoList, scnr);
@@ -67,29 +64,29 @@ public class Automobile_Inventory {
         catch (InputMismatchException e) {
             System.out.println("must enter correct data type for each field");
             scnr.nextLine(); // clears scanner before next userInput
-            // FIXME: route user to failed input attempt
         }
         }
     
     public static void listAutoInventory(ArrayList<Automobile> autoList) {
-        // if inventory empty print 'inventory empty'
-        // else
-            // for auto in autolist print autoInfo
-        autoList.forEach((auto) -> System.out.println(auto.getautoInfo()));
+        if (autoList.isEmpty()) {
+            System.out.println("Auto inventory is empty, add an auto in order to list an inventory.");
+        }
+        else {
+            autoList.forEach((auto) -> System.out.println(auto.getautoInfo()));
+        } 
     }
     
-    public static void removeAuto(ArrayList<Automobile> autoList, int ID) { // remove auto from inventory based on ID from user input
-        // try
-        for (int i = 0; i < autoList.size(); i++) {
-            if (ID == autoList.get(i).getID()) {
-                autoList.remove(i);
-                System.out.printf("Auto ID: %d removed\n", ID);
-                break;
-            }
-        System.out.println("Auto ID not found");
+    public static void removeAuto(ArrayList<Automobile> autoList, Scanner scnr) { // remove auto from inventory based on ID from user input
+        try {
+            System.out.print("Enter autoList index to remove: ");
+            int index = scnr.nextInt();
+            scnr.nextLine();
+            autoList.remove(index);
+            System.out.printf("Auto index: %d removed\n", index);
         }
-        // catch value not found
-        //     print error message
+        catch (IndexOutOfBoundsException e) {
+            System.out.println("Auto index not found");
+        }
     }
     
     public static void updateAuto(ArrayList<Automobile> autoList, Scanner scnr) {
@@ -104,6 +101,7 @@ public class Automobile_Inventory {
                 if (field.equalsIgnoreCase("make")) {
                     System.out.print("Enter new value: ");
                     autoList.get(i).setMake(scnr.nextLine());
+                    System.out.println("make updated");
                 }
                 // FIX: add other fields
                 break;
@@ -123,6 +121,7 @@ public class Automobile_Inventory {
             for (int i = 0; i < autoList.size(); i++) {
                 printWriter.println(autoList.get(i).getautoInfo());
             }
+            System.out.println("export to file successful");
         } catch (IOException e) {
             e.printStackTrace();
         }
