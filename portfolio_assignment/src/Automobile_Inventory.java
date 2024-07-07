@@ -1,15 +1,11 @@
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.lang.IndexOutOfBoundsException;
 public class Automobile_Inventory {
-    
-    // declare variable
     
     public static void main(String[] args) throws Exception {
         // consider refactor as linkedlist
@@ -20,7 +16,7 @@ public class Automobile_Inventory {
                 System.out.println("Commands: 'addAuto', 'listAutoInventory', 'removeAuto', 'updateAuto','exportInventory', 'quit'");
                 command = scnr.nextLine();
                 if (command.equalsIgnoreCase("addAuto")) {
-                    addAuto(scnr, autoList);
+                    addAuto(autoList, scnr);
                 }
                 else if (command.equalsIgnoreCase("listAutoInventory")) {
                     listAutoInventory(autoList);
@@ -34,15 +30,13 @@ public class Automobile_Inventory {
                 else if (command.equalsIgnoreCase("exportInventory")) {
                     exportInventory(autoList, scnr);
                 }
+                scnr.nextLine(); // clears scanner before next userInput
             }
             while (!command.equalsIgnoreCase("quit"));   
-
-        }
-        // catch blocks?
-                
+        }       
     }
     
-    public static void addAuto(Scanner scnr, ArrayList<Automobile> autoList) {
+    public static void addAuto(ArrayList<Automobile> autoList, Scanner scnr) {
         // add new auto to autoList inventory
         try {
             System.out.println("Enter make(String)");
@@ -55,17 +49,18 @@ public class Automobile_Inventory {
             int year = scnr.nextInt();
             System.out.println("Enter mileage(int)");
             int mileage = scnr.nextInt();
-            scnr.nextLine(); // clear scanner before next userInput
             
             Automobile auto = new Automobile(make, model, color, year, mileage);
             autoList.add(auto);
             System.out.println("auto added");
         }
         catch (InputMismatchException e) {
-            System.out.println("must enter correct data type for each field");
-            scnr.nextLine(); // clears scanner before next userInput
+            System.err.println("must enter correct data type for each field");
         }
+        catch (Exception e) {
+            System.err.println(e.getMessage());
         }
+    }
     
     public static void listAutoInventory(ArrayList<Automobile> autoList) {
         if (autoList.isEmpty()) {
@@ -80,12 +75,11 @@ public class Automobile_Inventory {
         try {
             System.out.print("Enter autoList index to remove: ");
             int index = scnr.nextInt();
-            scnr.nextLine();
             autoList.remove(index);
             System.out.printf("Auto index: %d removed\n", index);
         }
         catch (IndexOutOfBoundsException e) {
-            System.out.println("Auto index not found");
+            System.err.println("Auto index not found");
         }
     }
     
@@ -126,15 +120,15 @@ public class Automobile_Inventory {
                 System.out.println("Field not found");
             }
         }
-        
         catch (InputMismatchException e) {
-            System.out.println("must enter correct data type for each field");
-            scnr.nextLine(); // clears scanner before next userInput
+            System.err.println("must enter correct data type for each field");
         }
-
         catch (IndexOutOfBoundsException e) {
-            System.out.println("Auto index not found");
-        } 
+            System.err.println("Auto index not found");
+        }
+        catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     public static void exportInventory(ArrayList<Automobile> autoList, Scanner scnr) {
@@ -151,7 +145,6 @@ public class Automobile_Inventory {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
     
 }
