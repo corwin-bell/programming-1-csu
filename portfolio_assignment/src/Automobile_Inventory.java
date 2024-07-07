@@ -6,9 +6,8 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 import java.lang.IndexOutOfBoundsException;
 public class Automobile_Inventory {
-    
+
     public static void main(String[] args) throws Exception {
-        // consider refactor as linkedlist
         ArrayList<Automobile> autoList = new ArrayList<>();
         String command = "";
         try (Scanner scnr = new Scanner(System.in)) {
@@ -63,6 +62,7 @@ public class Automobile_Inventory {
     }
     
     public static void listAutoInventory(ArrayList<Automobile> autoList) {
+        // print all autos in inventory to a new line
         if (autoList.isEmpty()) {
             System.out.println("Auto inventory is empty, add an auto in order to list an inventory.");
         }
@@ -71,7 +71,8 @@ public class Automobile_Inventory {
         } 
     }
     
-    public static void removeAuto(ArrayList<Automobile> autoList, Scanner scnr) { // remove auto from inventory based on ID from user input
+    public static void removeAuto(ArrayList<Automobile> autoList, Scanner scnr) { 
+        // remove auto from inventory based on index from user input
         try {
             System.out.print("Enter autoList index to remove: ");
             int index = scnr.nextInt();
@@ -84,6 +85,7 @@ public class Automobile_Inventory {
     }
     
     public static void updateAuto(ArrayList<Automobile> autoList, Scanner scnr) {
+        // access auto class getters for selected auto index in inventory
         try {
             System.out.print("Enter an auto index to update: ");
             int index = scnr.nextInt();
@@ -132,8 +134,7 @@ public class Automobile_Inventory {
     }
 
     public static void exportInventory(ArrayList<Automobile> autoList, Scanner scnr) {
-
-        // The file path where you want to save the string
+        // export inventory to file in current directory
         System.out.print("Enter file path: ");
         String filePath = scnr.nextLine();
 
@@ -145,6 +146,5 @@ public class Automobile_Inventory {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-    
+    }  
 }
