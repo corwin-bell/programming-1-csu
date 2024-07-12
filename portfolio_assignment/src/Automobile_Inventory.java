@@ -79,6 +79,9 @@ public class Automobile_Inventory {
             autoList.remove(index);
             System.out.printf("Auto index: %d removed\n", index);
         }
+        catch (InputMismatchException e) {
+            System.err.println("must enter correct data type for each field");
+        }
         catch (IndexOutOfBoundsException e) {
             System.err.println("Auto index not found");
         }
